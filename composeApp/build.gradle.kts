@@ -44,6 +44,7 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(project(":presentation-core-styling"))
+            implementation(project(":presentation-core-platform"))
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
