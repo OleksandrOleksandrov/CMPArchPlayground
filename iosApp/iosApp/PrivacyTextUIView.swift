@@ -1,5 +1,5 @@
 //
-//  PrivacyBoxUIView.swift
+//  PrivacyTextUIView.swift
 //  iosApp
 //
 //  Created by Oleksandr on 01.07.2025.
@@ -10,14 +10,14 @@ import ComposeApp
 
 class IOSNativeViewFactory: NativeViewFactory {
     static var shared = IOSNativeViewFactory()
-    func createPrivacyBoxUIView(text: String) -> UIViewController {
-        let view = PrivacyBoxUIView(label: text)
+    func createPrivacyTextUIView(text: String) -> UIViewController {
+        let view = PrivacyTextUIView(label: text)
         
         return UIHostingController(rootView: view)
     }
 }
 
-struct PrivacyBoxUIView: View {
+struct PrivacyTextUIView: View {
     var label: String
     var body: some View {
             Text(label).privacySensitive()
@@ -25,5 +25,5 @@ struct PrivacyBoxUIView: View {
 }
 
 #Preview {
-    PrivacyBoxUIView(label: "String")
+    PrivacyTextUIView(label: "String")
 }

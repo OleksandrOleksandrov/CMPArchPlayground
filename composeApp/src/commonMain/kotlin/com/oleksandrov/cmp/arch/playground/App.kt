@@ -1,6 +1,7 @@
 package com.oleksandrov.cmp.arch.playground
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,6 +22,7 @@ fun App() {
     AppTheme {
         Column(
             modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
         ) {
             Box(
                 modifier = Modifier.size(100.dp).clip(RoundedCornerShape(Theme.corner.corner24))
@@ -28,7 +30,7 @@ fun App() {
                 contentAlignment = Alignment.Center
             ) {}
 
-            PrivacyBox(modifier = Modifier, text = "text", content = {})
+            PrivacyText(modifier = Modifier, text = "Text that is blurred when app is not in focus")
         }
 
     }

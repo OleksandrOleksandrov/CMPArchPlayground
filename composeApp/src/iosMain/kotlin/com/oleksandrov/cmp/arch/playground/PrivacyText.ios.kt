@@ -9,12 +9,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.UIKitViewController
 
 @Composable
-actual fun PrivacyBox(modifier: Modifier , text: String,  content: @Composable () -> Unit) {
+actual fun PrivacyText(modifier: Modifier, text: String) {
     val factory = LocalNativeViewFactory.current
     UIKitViewController(
         modifier = modifier.fillMaxWidth().height(200.dp).width(300.dp),// Must be sit size
         factory = {
-            factory.createPrivacyBoxUIView(text = text)
+            factory.createPrivacyTextUIView(text = text)
         }
     )
 }
