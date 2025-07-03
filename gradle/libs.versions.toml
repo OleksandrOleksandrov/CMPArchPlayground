@@ -14,6 +14,10 @@ kotlinStdlib = "2.2.0"
 runner = "1.6.2"
 core = "1.6.1"
 
+#region koin
+koinComposeMultiplatform = "4.1.0"
+#endregion koin
+
 # andorid sdk versions
 android-compileSdk = "36"
 android-minSdk = "24"
@@ -35,6 +39,15 @@ kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", versio
 androidx-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
 androidx-core = { group = "androidx.test", name = "core", version.ref = "core" }
 
+#region koin
+koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koinComposeMultiplatform" }
+koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koinComposeMultiplatform" }
+koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koinComposeMultiplatform" }
+#endregion koin
+
+[bundles]
+koin = ["koin.core", "koin.compose", "koin.compose.viewmodel"]
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
@@ -43,3 +56,8 @@ composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "k
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 androidKotlinMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
+
+android-app-module-conventions = { id = "com.oleksandr.android.application" }
+android-koin-conventions = { id = "com.oleksandr.android.koin" }
+android-test-conventions = { id = "com.oleksandr.android.test" }
+kotlin-test-conventions = { id = "com.oleksandr.kotlin.test" }

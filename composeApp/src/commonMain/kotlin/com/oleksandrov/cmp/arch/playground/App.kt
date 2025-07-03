@@ -15,10 +15,12 @@ import androidx.compose.ui.unit.dp
 import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.AppTheme
 import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.core.Theme
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 @Preview
 fun App() {
+    val viewModel = koinViewModel<AppViewModel>()
     AppTheme {
         Column(
             modifier = Modifier.fillMaxSize(),
@@ -30,7 +32,7 @@ fun App() {
                 contentAlignment = Alignment.Center
             ) {}
 
-            PrivacyText(modifier = Modifier, text = "Text that is blurred when app is not in focus")
+            PrivacyText(modifier = Modifier, text = viewModel.getString())
         }
 
     }
