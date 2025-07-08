@@ -32,3 +32,5 @@ dependencyResolutionManagement {
 include(":composeApp")
 include(":presentation-core-styling")
 include(":presentation-core-platform")
+include(":template")
+include(":network")
