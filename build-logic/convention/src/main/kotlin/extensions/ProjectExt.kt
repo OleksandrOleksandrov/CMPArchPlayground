@@ -34,3 +34,21 @@ val Project.projectLibs
 fun Project.plugins(block: PluginManager.() -> Unit) {
     this.pluginManager.block()
 }
+
+/**
+ * Retrieves version as a [Int] from the project's extensions by the given name.
+ *
+ * This extension function simplifies the process of accessing specific version
+ * from the version catalog.
+ *
+ * Usage:
+ *
+ * ```kotlin
+ * val version: Int = project.getVersionAsInt("someVersion")
+ * ```
+ *
+ * @param name The exact name of the version entry in the version catalog.
+ *
+ * @return The version as a [Int].
+ */
+fun Project.getVersionAsInt(name: String) = projectLibs.findVersion(name).get().toString().toInt()

@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
+    alias(libs.plugins.composeMultiplatform)
+    alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.convention.android.feature)
 }
 
 kotlin {
@@ -10,8 +13,6 @@ kotlin {
     // See: https://kotlinlang.org/docs/multiplatform-discover-project.html#targets
     androidLibrary {
         namespace = "com.oleksandrov.cmp.arch.playground.presentation.core.platform"
-        compileSdk = 36
-        minSdk = 24
 
         withHostTestBuilder {
         }
@@ -53,6 +54,7 @@ kotlin {
                 implementation(libs.kotlin.stdlib)
                 implementation(libs.androidx.lifecycle.viewmodel)
                 // Add KMP dependencies here
+                implementation(libs.androidx.lifecycle.runtimeCompose)//TODO check if this is needed
             }
         }
 
