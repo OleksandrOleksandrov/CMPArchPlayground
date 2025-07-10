@@ -1,7 +1,8 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
-    alias(libs.plugins.android.koin.conventions)
+    alias(libs.plugins.convention.koin)
+    alias(libs.plugins.convention.android.feature)
 }
 
 kotlin {
@@ -11,8 +12,6 @@ kotlin {
     // See: https://kotlinlang.org/docs/multiplatform-discover-project.html#targets
     androidLibrary {
         namespace = "com.oleksandrov.cmp.arch.playground.network"
-        compileSdk = 36
-        minSdk = 24
 
         withHostTestBuilder {
         }

@@ -28,8 +28,13 @@ dependencies {
 gradlePlugin {
     plugins {
         register("androidKoin") {
-            id = "com.oleksandr.android.koin"
+            id = "com.oleksandr.convention.koin"
             implementationClass = "KoinConventionPlugin"
+        }
+        register("androidFeature") {
+            id = "com.oleksandr.android.feature"
+            implementationClass =
+                "AndroidFeatureConventionPlugin"
         }
     }
 }

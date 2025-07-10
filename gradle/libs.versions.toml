@@ -89,7 +89,8 @@ androidKotlinMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.lib
 # https://mvnrepository.com/artifact/org.jetbrains.kotlin.plugin.serialization/org.jetbrains.kotlin.plugin.serialization.gradle.plugin
 org-jetbrains-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "serialization" }
 
-android-app-module-conventions = { id = "com.oleksandr.android.application" }
-android-koin-conventions = { id = "com.oleksandr.android.koin" }
-android-test-conventions = { id = "com.oleksandr.android.test" }
-kotlin-test-conventions = { id = "com.oleksandr.kotlin.test" }
+android-app-module-convention = { id = "com.oleksandr.android.application" }
+convention-koin = { id = "com.oleksandr.convention.koin" }
+convention-android-feature = { id = "com.oleksandr.android.feature" }
+convention-android-test = { id = "com.oleksandr.android.test" }
+convention-kotlin-test = { id = "com.oleksandr.kotlin.test" }
