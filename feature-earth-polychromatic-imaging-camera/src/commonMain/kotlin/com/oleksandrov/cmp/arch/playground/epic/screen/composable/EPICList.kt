@@ -1,0 +1,80 @@
+package com.oleksandrov.cmp.arch.playground.epic.screen.composable
+
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.items
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import com.oleksandrov.cmp.arch.playground.epic.model.EpicUiModel
+import com.oleksandrov.cmp.arch.playground.epic.model.PictureOfDayUiModel
+import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.AppTheme
+import org.jetbrains.compose.ui.tooling.preview.Preview
+
+@Composable
+internal fun EPICList(
+    modifier: Modifier,
+    paddingValues: PaddingValues,
+    lazyState: LazyListState,
+    pictureOfDayUiModel: PictureOfDayUiModel?,
+    list: List<EpicUiModel>,
+    onClick: (EpicUiModel) -> Unit,
+) {
+    LazyColumn(
+        modifier = modifier,
+        contentPadding = paddingValues,
+        state = lazyState,
+        content = {
+            item {
+                pictureOfDayUiModel?.let {
+                    PictureOfDay(
+                        modifier = Modifier,
+                        pictureOfDayUiModel = it,
+                    )
+                }
+            }
+            items(
+                items = list,
+                key = { it.identifier.orEmpty() }
+            ) {
+                EPICListItem(
+                    modifier = Modifier
+                        .clickable { onClick(it) },
+                    item = it,
+                )
+            }
+        }
+    )
+}
+
+@Composable
+@Preview
+private fun EPICListPreview() {
+    AppTheme {
+        EPICList(
+            modifier = Modifier,
+            pictureOfDayUiModel = null,
+            list = listOf(
+                EpicUiModel(
+                    identifier = "1",
+                    image = "https://example.com/image1.jpg",
+                    caption = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n" +
+                            "\n",
+                    date = "2023-10-01"
+                ),
+                EpicUiModel(
+                    identifier = "2",
+                    image = "https://example.com/image2.jpg",
+                    caption = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n" +
+                            "\n",
+                    date = "2023-10-02"
+                )
+            ),
+            paddingValues = PaddingValues(0.dp),
+            lazyState = LazyListState(0, 0),
+            onClick = {},
+        )
+    }
+}

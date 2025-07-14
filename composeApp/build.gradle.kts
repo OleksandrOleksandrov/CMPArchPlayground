@@ -44,8 +44,11 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(project(":network"))
+            implementation(project(":data-epic"))
+            implementation(project(":domain-epic"))
             implementation(project(":presentation-core-styling"))
             implementation(project(":presentation-core-platform"))
+            implementation(project(":feature-earth-polychromatic-imaging-camera"))
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
