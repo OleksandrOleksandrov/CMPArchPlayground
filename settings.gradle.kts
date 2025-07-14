@@ -32,5 +32,14 @@ dependencyResolutionManagement {
 include(":composeApp")
 include(":presentation-core-styling")
 include(":presentation-core-platform")
-include(":template")
+
+include(":common-mapper")
 include(":network")
+
+include(":data-epic")
+
+include(":domain-epic")
+
+include(":feature-earth-polychromatic-imaging-camera")
+
+include(":template")
