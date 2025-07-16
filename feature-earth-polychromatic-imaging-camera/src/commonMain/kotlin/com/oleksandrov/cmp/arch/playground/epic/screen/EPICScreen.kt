@@ -34,6 +34,18 @@ fun EPICScreen(
         }
     }
 
+    LaunchedEffect(eventFlow) {
+        eventFlow.collect { event ->
+            when (event) {
+                is ViewEvent.ShowError -> {
+                    // Handle error, e.g., show a snackbar or dialog
+                }
+
+                is ViewEvent.NavigateToEpicDetails -> onAction(EpicScreenAction.GoToDetailsAction)
+            }
+        }
+    }
+
     EPICContent(
         modifier = Modifier,
         state = state,
