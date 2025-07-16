@@ -2,52 +2,68 @@ package com.oleksandrov.cmp.arch.playground.epic.screen
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.oleksandrov.cmp.arch.playground.epic.model.EpicUiModel
 import com.oleksandrov.cmp.arch.playground.epic.model.PictureOfDayUiModel
 import com.oleksandrov.cmp.arch.playground.epic.screen.composable.EPICList
+import com.oleksandrov.cmp.arch.playground.epic.screen.contract.ViewIntent
+import com.oleksandrov.cmp.arch.playground.epic.screen.contract.ViewState
 import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.AppTheme
+import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.core.Theme
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
-fun EPICContent(
+internal fun EPICContent(
     modifier: Modifier,
-    pictureOfDayUiModel: PictureOfDayUiModel?,
-    list: List<EpicUiModel>,
-    navigateToDetails: (EpicUiModel) -> Unit,
+    state: ViewState,
+    onIntent: (ViewIntent) -> Unit = {},
 ) {
 
-    val selected = rememberSaveable { mutableStateOf<EpicUiModel?>(null) }
     val listState = rememberSaveable(saver = LazyListState.Saver) { LazyListState(0, 0) }
-    val smallWeight = 0.7f
-    val bigWeight = 1f
 
-    Scaffold(
-        modifier = modifier,
-        contentWindowInsets = WindowInsets.safeDrawing,
-        containerColor = Color.DarkGray,
-    ) { scaffoldPaddingValues ->
-        Box(
-            modifier = Modifier
-        ) {
-            EPICList(
-                modifier = Modifier,
-                paddingValues = scaffoldPaddingValues,
-                lazyState = listState,
-                pictureOfDayUiModel = pictureOfDayUiModel,
-                list = list,
-                onClick = {
-                    selected.value = it
-                    navigateToDetails(it)
+    with(state) {
+        Scaffold(
+            modifier = modifier,
+            contentWindowInsets = WindowInsets.safeDrawing,
+            containerColor = Color.DarkGray,
+        ) { scaffoldPaddingValues ->
+            Box(
+                modifier = Modifier.fillMaxSize()
+            ) {
+                if (state.isProcessing) {
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        CircularProgressIndicator(
+                            modifier = Modifier,
+                            color = Theme.color.themeEColor.e1000,
+                            strokeWidth = 2.dp
+                        )
+                    }
+                } else {
+                    EPICList(
+                        modifier = Modifier,
+                        paddingValues = scaffoldPaddingValues,
+                        lazyState = listState,
+                        pictureOfDayUiModel = null,
+                        list = state.epicList,
+                        onClick = {
+                            onIntent(ViewIntent.OnEpicItemTappedIntent(it))
+                        }
+                    )
                 }
-            )
+            }
         }
     }
 }
@@ -58,9 +74,11 @@ private fun EPICContentMediumWindowSizePreview() {
     AppTheme {
         EPICContent(
             modifier = Modifier,
-            pictureOfDayUiModel = pictureOfDayUiModel,
-            list = mockList,
-            navigateToDetails = {},
+            state = ViewState(
+                isProcessing = false,
+                epicList = mockList,
+                isListLoadingError = false,
+            ),
         )
     }
 }
@@ -71,9 +89,11 @@ private fun EPICContentCompactWindowSizePreview() {
     AppTheme {
         EPICContent(
             modifier = Modifier,
-            pictureOfDayUiModel = pictureOfDayUiModel,
-            list = mockList,
-            navigateToDetails = {},
+            state = ViewState(
+                isProcessing = false,
+                epicList = mockList,
+                isListLoadingError = false,
+            ),
         )
     }
 }

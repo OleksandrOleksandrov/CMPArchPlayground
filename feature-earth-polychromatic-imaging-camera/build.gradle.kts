@@ -4,7 +4,6 @@ plugins {
     alias(libs.plugins.convention.android.feature)
     alias(libs.plugins.convention.koin)
     alias(libs.plugins.composeMultiplatform)
-//    id("kotlin-parcelize")
 }
 
 kotlin {
