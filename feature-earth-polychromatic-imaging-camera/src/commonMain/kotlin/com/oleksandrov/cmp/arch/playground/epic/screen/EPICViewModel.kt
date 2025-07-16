@@ -12,6 +12,7 @@ import com.oleksandrov.cmp.arch.playground.presentation.core.platform.base.viewm
 import com.oleksandrov.cmp.arch.playground.presentation.core.platform.ext.stateWhileSubscribed
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.filterIsInstance
@@ -28,6 +29,8 @@ internal class EPICViewModel(
 ) : BaseMviViewModel<ViewIntent, ViewState, ViewEvent>() {
 
     override val viewState: StateFlow<ViewState>
+
+    val state = MutableStateFlow("State.New")
 
     init {
         val initialState = ViewState()
