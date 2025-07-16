@@ -9,15 +9,13 @@ kotlin {
     // Target declarations - add or remove as needed below. These define
     // which platforms this KMP module supports.
     // See: https://kotlinlang.org/docs/multiplatform-discover-project.html#targets
-    androidLibrary {
+    android {
         namespace = "com.oleksandrov.cmp.arch.playground.domain.epic"
 
-        withHostTestBuilder {
+        withHostTest {
         }
 
-        withDeviceTestBuilder {
-            sourceSetTreeName = "test"
-        }.configure {
+        withDeviceTest {
             instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         }
     }
@@ -32,7 +30,6 @@ kotlin {
     val xcfName = "domainEpicKit"
 
     listOf(
-        iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach { iosTarget ->

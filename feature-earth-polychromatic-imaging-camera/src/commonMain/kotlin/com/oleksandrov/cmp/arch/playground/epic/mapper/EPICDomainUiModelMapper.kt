@@ -1,5 +1,6 @@
 package com.oleksandrov.cmp.arch.playground.epic.mapper
 
+import com.oleksandrov.cmp.arch.playground.common.kotlin.CommonLocalDateFormat
 import com.oleksandrov.cmp.arch.playground.common.mapper.BaseMapper
 import com.oleksandrov.cmp.arch.playground.domain.epic.model.EPICDomainModel
 import com.oleksandrov.cmp.arch.playground.epic.model.EpicUiModel
@@ -15,12 +16,10 @@ object EPICDomainUiModelMapper : BaseMapper<EPICDomainModel, EpicUiModel> {
     }
 
     override fun mapTo(model: EPICDomainModel) = with(model) {
-//        val calendar = Calendar.getInstance()
-//        calendar.time = date?.parseToDate(PATTERN_DATE_DIGITS_YEAR_MONTH_DAY)
         EpicUiModel(
             identifier = identifier,
             caption = caption,
-            image = "sdfasdf",
+            image = "https://api.nasa.gov/EPIC/archive/natural/${CommonLocalDateFormat.parseDate(date.orEmpty())}/thumbs/${image}.jpg?api_key=3SXKZBBq6vEmA7yamongiBY66cvnlx1JbeeDOtZu",
             date = date,
         )
     }

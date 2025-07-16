@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -12,17 +13,19 @@ java {
 }
 
 tasks.withType<KotlinCompile>().configureEach {
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
     }
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin.multiplatform:org.jetbrains.kotlin.multiplatform.gradle.plugin:2.2.0")
-    implementation("com.android.tools.build:gradle:8.7.0")
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.20")
-    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.23.8")
-    implementation("org.jetbrains.compose:compose-gradle-plugin:1.8.2")
+    implementation(libs.kotlin.mpp.plugin)
+    implementation(libs.android.gradle.plugin)
+    implementation(libs.android.gradle.api)
+    implementation(libs.android.mpp.plugin)
+    implementation(libs.kotlin.gradle.plugin)
+    implementation(libs.detekt.gradle.plugin)
+    implementation(libs.compose.gradle.plugin)
 }
 
 gradlePlugin {
