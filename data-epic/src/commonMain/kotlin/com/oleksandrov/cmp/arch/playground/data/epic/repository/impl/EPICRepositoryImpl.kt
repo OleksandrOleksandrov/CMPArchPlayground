@@ -22,4 +22,8 @@ class EPICRepositoryImpl(
         dataList.value =
             epicNetSource.fetchEpic().body<List<EPICNetModel>>().map(EPICRepoModelMapper::mapTo)
     }
+
+    override suspend fun fetchData(): List<EPICRepoModel>? {
+        return epicNetSource.fetchEpic().body<List<EPICNetModel>>().map(EPICRepoModelMapper::mapTo)
+    }
 }

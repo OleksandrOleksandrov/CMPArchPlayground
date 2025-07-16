@@ -51,6 +51,7 @@ kotlin {
             dependencies {
                 implementation(libs.kotlin.stdlib)
                 // Add KMP dependencies here
+                implementation(libs.androidx.lifecycle.runtimeCompose)//TODO check if this is needed
             }
         }
 

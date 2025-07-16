@@ -53,6 +53,7 @@ kotlin {
                 // Add KMP dependencies here
                 implementation(libs.androidx.lifecycle.runtimeCompose)//TODO check if this is needed
                 implementation(project(":common-mapper"))
+                implementation(project(":common-exception"))
                 implementation(project(":data-epic"))
             }
         }
