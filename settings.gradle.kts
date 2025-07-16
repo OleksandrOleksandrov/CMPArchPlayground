@@ -34,6 +34,7 @@ include(":presentation-core-styling")
 include(":presentation-core-platform")
 
 include(":common-mapper")
+include(":common-exception")
 include(":network")
 
 include(":data-epic")
