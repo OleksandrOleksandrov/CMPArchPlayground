@@ -33,6 +33,7 @@ include(":composeApp")
 include(":presentation-core-styling")
 include(":presentation-core-platform")
 
+include(":common-kotlin")
 include(":common-mapper")
 include(":common-exception")
 include(":network")
