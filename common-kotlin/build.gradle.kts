@@ -2,8 +2,6 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
     alias(libs.plugins.convention.android.feature)
-    alias(libs.plugins.convention.koin)
-    alias(libs.plugins.composeMultiplatform)
 }
 
 kotlin {
@@ -12,7 +10,7 @@ kotlin {
     // which platforms this KMP module supports.
     // See: https://kotlinlang.org/docs/multiplatform-discover-project.html#targets
     androidLibrary {
-        namespace = "com.oleksandrov.cmp.arch.playground.earth.polychromatic.imaging.camera"
+        namespace = "com.oleksandrov.cmp.arch.playground.common.kotlin"
 
         withHostTestBuilder {
         }
@@ -31,7 +29,7 @@ kotlin {
     // A step-by-step guide on how to include this library in an XCode
     // project can be found here:
     // https://developer.android.com/kotlin/multiplatform/migrate
-    val xcfName = "templateKit"
+    val xcfName = "commonMapperKit"
 
     listOf(
         iosX64(),
@@ -53,17 +51,8 @@ kotlin {
             dependencies {
                 implementation(libs.kotlin.stdlib)
                 // Add KMP dependencies here
-                implementation(libs.kotlinx.serialization.core)
-                implementation(compose.components.uiToolingPreview)
-                implementation(libs.androidx.core.ktx)
-                implementation(libs.androidx.lifecycle.runtimeCompose)//TODO check if this is needed
-
-                implementation(project(":common-kotlin"))
-                implementation(project(":common-mapper"))
-                implementation(project(":domain-epic"))
-                implementation(project(":data-epic")) // TODO remove when extansions are moved to another module
-                implementation(project(":presentation-core-platform"))
-                implementation(project(":presentation-core-styling"))
+                implementation(libs.androidx.lifecycle.runtimeCompose)
+                implementation(libs.kotlin.datetime)
             }
         }
 
@@ -75,7 +64,9 @@ kotlin {
 
         androidMain {
             dependencies {
-                implementation(libs.androidx.material3)
+                // Add Android-specific dependencies here. Note that this source set depends on
+                // commonMain by default and will correctly pull the Android artifacts of any KMP
+                // dependencies declared in commonMain.
             }
         }
 
@@ -84,14 +75,6 @@ kotlin {
                 implementation(libs.androidx.runner)
                 implementation(libs.androidx.core)
                 implementation(libs.androidx.testExt.junit)
-
-                //region Adaptive layout
-                implementation(libs.androidx.adaptive)
-                implementation(libs.androidx.material3.window.sizeclass)
-                implementation(libs.androidx.adaptive.layout)
-                implementation(libs.androidx.adaptive.navigation)
-                implementation(libs.androidx.material3.adaptive.navigation.suite)
-                //endregion Adaptive layout
             }
         }
 
