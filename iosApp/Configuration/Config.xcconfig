@@ -1,6 +1,6 @@
 TEAM_ID=
 
-PRODUCT_NAME=CMPArchitecturePlayground
+PRODUCT_NAME=CMP Arch
 PRODUCT_BUNDLE_IDENTIFIER=com.oleksandrov.cmp.arch.playground.CMPArchitecturePlayground$(TEAM_ID)
 
 CURRENT_PROJECT_VERSION=1
