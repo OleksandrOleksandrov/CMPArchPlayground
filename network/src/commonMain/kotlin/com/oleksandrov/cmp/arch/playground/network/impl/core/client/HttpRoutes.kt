@@ -2,7 +2,7 @@ package com.oleksandrov.cmp.arch.playground.network.impl.core.client
 
 sealed class HttpRoutes { // TODO: make it internal
     data object Epic : HttpRoutes() {
-        const val EPIC = "/EPIC/api/natural?api_key=$TEST_KEY"
+        const val EPIC = "/api/natural?api_key=$TEST_KEY"
     }
 
     companion object {
