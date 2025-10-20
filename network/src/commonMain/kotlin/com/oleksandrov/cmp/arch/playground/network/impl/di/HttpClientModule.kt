@@ -15,7 +15,7 @@ val httpClientModule = module {
     single {
         networkConfiguration(
             hostConfig = {
-                baseUrl = "https://api.nasa.gov" //TODO: Replace with buildTypes later.
+                baseUrl = "https://epic.gsfc.nasa.gov" //TODO: Replace with buildTypes later.
             },
             timeoutConfig = {
                 connectionTimeout = 30.seconds
