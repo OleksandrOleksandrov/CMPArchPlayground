@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.convention.koin)
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
+    alias(libs.plugins.org.jetbrains.kotlin.serialization)
 }
 
 kotlin {
@@ -29,6 +30,10 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+
+            //region Preview tools, etc
+            implementation(libs.uiTooling)
+            //endregion Preview tools, etc
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -36,15 +41,26 @@ kotlin {
             implementation(compose.material3)
             implementation(compose.ui)
             implementation(libs.jetbrains.compose.res)
-            implementation(libs.jetbrains.compose.ui.tp)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(project(":core-navigation"))
             implementation(project(":network"))
             implementation(project(":data-epic"))
             implementation(project(":domain-epic"))
             implementation(project(":presentation-core-styling"))
             implementation(project(":presentation-core-platform"))
             implementation(project(":feature-earth-polychromatic-imaging-camera"))
+            implementation(project(":feature-epic-details"))
+
+            //region Preview tools, etc
+            implementation(libs.jetbrains.compose.ui.tp)
+            //endregion Preview tools, etc
+
+            //region navigation3
+            implementation(libs.jetbrains.navigation3.ui)
+            implementation(libs.jetbrains.material3.adaptiveNavigation3)
+            implementation(libs.jetbrains.lifecycle.viewmodelNavigation3)
+            //endregion navigation3
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

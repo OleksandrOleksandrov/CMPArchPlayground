@@ -6,7 +6,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.oleksandrov.cmp.arch.playground.epic.navigation.EpicScreenAction
+import com.oleksandrov.cmp.arch.playground.epic.model.EpicUiModel
 import com.oleksandrov.cmp.arch.playground.epic.screen.contract.ViewEvent
 import com.oleksandrov.cmp.arch.playground.presentation.core.platform.composable.rememberFlowWithLifecycle
 import kotlinx.coroutines.launch
@@ -14,7 +14,7 @@ import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun EPICScreen(
-    onAction: (EpicScreenAction) -> Unit
+    onAction: (EpicUiModel) -> Unit
 ) {
 
     val scope = rememberCoroutineScope()
@@ -29,7 +29,9 @@ fun EPICScreen(
                     // Handle error, e.g., show a snackbar or dialog
                 }
 
-                is ViewEvent.NavigateToEpicDetails -> onAction(EpicScreenAction.GoToDetailsAction)
+                is ViewEvent.NavigateToEpicDetails -> event.model.identifier?.let {
+                    onAction(event.model)
+                }
             }
         }
     }

@@ -32,6 +32,7 @@ dependencyResolutionManagement {
 include(":composeApp")
 include(":presentation-core-styling")
 include(":presentation-core-platform")
+include(":core-navigation")
 
 include(":common-kotlin")
 include(":common-mapper")
@@ -43,6 +44,7 @@ include(":data-epic")
 include(":domain-epic")
 
 include(":feature-earth-polychromatic-imaging-camera")
+include(":feature-epic-details")
 
 include(":template")
 include(":androidApp")

@@ -24,6 +24,14 @@ class EPICRepositoryImpl(
     }
 
     override suspend fun fetchData(): List<EPICRepoModel>? {
-        return epicNetSource.fetchEpic().body<List<EPICNetModel>>().map(EPICRepoModelMapper::mapTo)
+        val repoList =
+            epicNetSource.fetchEpic().body<List<EPICNetModel>>().map(EPICRepoModelMapper::mapTo)
+        dataList.value = repoList
+        return repoList
     }
+
+    override suspend fun getEpicById(id: String): EPICRepoModel? =
+        dataList.value?.find { it.identifier == id }?.let {
+            return it
+        }
 }

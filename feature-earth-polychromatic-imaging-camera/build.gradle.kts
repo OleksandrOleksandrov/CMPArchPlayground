@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.convention.android.feature)
     alias(libs.plugins.convention.koin)
     alias(libs.plugins.composeMultiplatform)
+    alias(libs.plugins.org.jetbrains.kotlin.serialization)
 }
 
 kotlin {
@@ -57,9 +58,17 @@ kotlin {
                 implementation(compose.material3)
                 implementation(compose.ui)
                 implementation(libs.jetbrains.compose.res)
-                implementation(libs.jetbrains.compose.ui.tp)
                 implementation(libs.androidx.core.ktx)
                 implementation(libs.androidx.lifecycle.runtimeCompose)//TODO check if this is needed
+
+                //region Preview tools, etc
+                implementation(libs.jetbrains.compose.ui.tp)
+                //endregion Preview tools, etc
+
+                //region Coil
+                implementation(libs.coil.compose)
+                implementation(libs.coil.network.ktor)
+                //endregion Coil
 
                 implementation(project(":common-kotlin"))
                 implementation(project(":common-mapper"))
@@ -78,7 +87,14 @@ kotlin {
 
         androidMain {
             dependencies {
+                //region Preview tools, etc
+                implementation(libs.uiTooling)
+                //endregion Preview tools, etc
                 implementation(libs.androidx.material3)
+
+                //region Ktor client dependency required for Coil
+                implementation(libs.ktor.client.android)
+                //endregion Ktor client dependency required for Coil
             }
         }
 
@@ -105,8 +121,11 @@ kotlin {
                 // part of KMP’s default source set hierarchy. Note that this source set depends
                 // on common by default and will correctly pull the iOS artifacts of any
                 // KMP dependencies declared in commonMain.
+
+                //region Ktor client dependency required for Coil
+                implementation(libs.ktor.client.darwin)
+                //endregion Ktor client dependency required for Coil
             }
         }
     }
-
 }
