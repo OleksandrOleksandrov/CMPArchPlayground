@@ -14,7 +14,7 @@ import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun EPICScreen(
-    onAction: (EpicScreenAction) -> Unit
+    onAction: (EpicScreenAction.GoToDetailsAction) -> Unit
 ) {
 
     val scope = rememberCoroutineScope()
@@ -29,7 +29,9 @@ fun EPICScreen(
                     // Handle error, e.g., show a snackbar or dialog
                 }
 
-                is ViewEvent.NavigateToEpicDetails -> onAction(EpicScreenAction.GoToDetailsAction)
+                is ViewEvent.NavigateToEpicDetails -> event.model.identifier?.let {
+                    onAction(EpicScreenAction.GoToDetailsAction(it))
+                }
             }
         }
     }

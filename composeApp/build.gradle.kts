@@ -45,6 +45,11 @@ kotlin {
             implementation(project(":presentation-core-styling"))
             implementation(project(":presentation-core-platform"))
             implementation(project(":feature-earth-polychromatic-imaging-camera"))
+
+            //region navigation3
+            implementation(libs.jetbrains.navigation3.ui)
+            implementation(libs.jetbrains.material3.adaptiveNavigation3)
+            //endregion navigation3
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
