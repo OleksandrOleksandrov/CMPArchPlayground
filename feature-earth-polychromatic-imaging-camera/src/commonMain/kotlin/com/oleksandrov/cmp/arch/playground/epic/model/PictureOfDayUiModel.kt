@@ -1,10 +1,9 @@
 package com.oleksandrov.cmp.arch.playground.epic.model
 
 import androidx.compose.runtime.Immutable
-import kotlinx.serialization.Serializable
 
 @Immutable
-@Serializable
+//@Serializable
 data class PictureOfDayUiModel(
     val date: String,
     val explanation: String,

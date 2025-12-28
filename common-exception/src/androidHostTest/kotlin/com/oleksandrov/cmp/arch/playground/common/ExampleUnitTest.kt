@@ -1,4 +1,4 @@
-package com.oleksandrov.cmp.arch.playground.template
+package com.oleksandrov.cmp.arch.playground.common
 
 import kotlin.test.Test
 import kotlin.test.assertEquals

@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
     alias(libs.plugins.convention.android.feature)
+    alias(libs.plugins.convention.koin)
 }
 
 kotlin {

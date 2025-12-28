@@ -1,7 +1,9 @@
 package com.oleksandrov.cmp.arch.playground.di
 
+import com.oleksandrov.cmp.arch.playground.core.navigation.di.coreNavigationModule
 import com.oleksandrov.cmp.arch.playground.data.epic.di.dataEpicModule
 import com.oleksandrov.cmp.arch.playground.domain.epic.di.domainEpicModule
+import com.oleksandrov.cmp.arch.playground.epic.details.di.featureEpicDetailsModule
 import com.oleksandrov.cmp.arch.playground.epic.di.featureEarthPolychromaticImagingCameraModule
 import com.oleksandrov.cmp.arch.playground.network.impl.di.httpClientModule
 import org.koin.core.context.startKoin
@@ -14,8 +16,10 @@ fun initKoin(
         config?.invoke(this)
         modules(
             appModule,
+            coreNavigationModule,
             httpClientModule,
             featureEarthPolychromaticImagingCameraModule,
+            featureEpicDetailsModule,
             dataEpicModule,
             domainEpicModule,
         )

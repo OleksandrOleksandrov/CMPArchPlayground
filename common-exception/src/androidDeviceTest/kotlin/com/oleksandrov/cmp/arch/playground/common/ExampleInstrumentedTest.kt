@@ -1,4 +1,4 @@
-package com.oleksandrov.cmp.arch.playground.template
+package com.oleksandrov.cmp.arch.playground.common
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

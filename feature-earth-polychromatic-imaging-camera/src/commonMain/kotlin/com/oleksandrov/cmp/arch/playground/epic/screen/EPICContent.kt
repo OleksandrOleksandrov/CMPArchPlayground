@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.oleksandrov.cmp.arch.playground.epic.model.EpicUiModel
 import com.oleksandrov.cmp.arch.playground.epic.model.PictureOfDayUiModel
@@ -20,7 +20,6 @@ import com.oleksandrov.cmp.arch.playground.epic.screen.contract.ViewIntent
 import com.oleksandrov.cmp.arch.playground.epic.screen.contract.ViewState
 import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.AppTheme
 import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.core.Theme
-import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 internal fun EPICContent(
@@ -35,7 +34,7 @@ internal fun EPICContent(
         Scaffold(
             modifier = modifier,
             contentWindowInsets = WindowInsets.safeDrawing,
-            containerColor = Color.DarkGray,
+            containerColor = Theme.color.themeNColor.n50,
         ) { scaffoldPaddingValues ->
             Box(
                 modifier = Modifier.fillMaxSize()
