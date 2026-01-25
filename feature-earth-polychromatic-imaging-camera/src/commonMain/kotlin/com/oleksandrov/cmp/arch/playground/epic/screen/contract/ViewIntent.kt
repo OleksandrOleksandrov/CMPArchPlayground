@@ -1,6 +1,6 @@
 package com.oleksandrov.cmp.arch.playground.epic.screen.contract
 
-import com.oleksandrov.cmp.arch.playground.epic.model.EpicUiModel
+import com.oleksandrov.cmp.arch.playground.presentation.core.model.EpicUiModel
 import com.oleksandrov.cmp.arch.playground.presentation.core.platform.base.mvi.MviIntent
 
 internal sealed interface ViewIntent : MviIntent {

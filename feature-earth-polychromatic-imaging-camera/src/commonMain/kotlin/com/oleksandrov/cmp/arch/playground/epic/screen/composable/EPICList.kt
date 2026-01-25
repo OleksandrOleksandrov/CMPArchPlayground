@@ -8,8 +8,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.oleksandrov.cmp.arch.playground.epic.model.EpicUiModel
 import com.oleksandrov.cmp.arch.playground.epic.model.PictureOfDayUiModel
+import com.oleksandrov.cmp.arch.playground.presentation.core.model.EpicUiModel
 import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.AppTheme
 import org.jetbrains.compose.ui.tooling.preview.Preview
 

@@ -1,7 +1,7 @@
 package com.oleksandrov.cmp.arch.playground.epic.screen.contract
 
 import androidx.compose.runtime.Immutable
-import com.oleksandrov.cmp.arch.playground.epic.model.EpicUiModel
+import com.oleksandrov.cmp.arch.playground.presentation.core.model.EpicUiModel
 import com.oleksandrov.cmp.arch.playground.presentation.core.platform.base.mvi.MviViewState
 import com.oleksandrov.cmp.arch.playground.presentation.core.platform.base.mvi.MviViewStateSaver
 

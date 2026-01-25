@@ -5,5 +5,5 @@ sealed class EpicScreenAction {
     /**
      * Represents an action to navigate to details screen.
      */
-    data object GoToDetailsAction : EpicScreenAction()
+    data class GoToDetailsAction(val id: String) : EpicScreenAction()
 }

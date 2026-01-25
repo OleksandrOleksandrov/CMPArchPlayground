@@ -29,7 +29,8 @@ fun EPICScreen(
                     // Handle error, e.g., show a snackbar or dialog
                 }
 
-                is ViewEvent.NavigateToEpicDetails -> onAction(EpicScreenAction.GoToDetailsAction)
+                is ViewEvent.NavigateToEpicDetails ->
+                    onAction(event.model.identifier?.let { EpicScreenAction.GoToDetailsAction(it) } as EpicScreenAction)
             }
         }
     }

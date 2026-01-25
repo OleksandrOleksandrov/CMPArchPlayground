@@ -1,6 +1,6 @@
 package com.oleksandrov.cmp.arch.playground.epic.screen.contract
 
-import com.oleksandrov.cmp.arch.playground.epic.model.EpicUiModel
+import com.oleksandrov.cmp.arch.playground.presentation.core.model.EpicUiModel
 
 internal sealed interface PartialStateChange {
     fun reduce(state: ViewState): ViewState

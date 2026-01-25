@@ -1,9 +1,8 @@
 package com.oleksandrov.cmp.arch.playground.epic.screen
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.oleksandrov.cmp.arch.playground.domain.epic.mapper.EPICDomainUiModelMapper
 import com.oleksandrov.cmp.arch.playground.domain.epic.usecase.UpdateEPICUseCase
-import com.oleksandrov.cmp.arch.playground.epic.mapper.EPICDomainUiModelMapper
 import com.oleksandrov.cmp.arch.playground.epic.screen.contract.PartialStateChange
 import com.oleksandrov.cmp.arch.playground.epic.screen.contract.ViewEvent
 import com.oleksandrov.cmp.arch.playground.epic.screen.contract.ViewIntent

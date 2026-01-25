@@ -52,8 +52,11 @@ kotlin {
                 implementation(libs.kotlin.stdlib)
                 // Add KMP dependencies here
                 implementation(libs.androidx.lifecycle.runtimeCompose)//TODO check if this is needed
+                implementation(libs.kotlinx.datetime)
                 implementation(project(":common-mapper"))
                 implementation(project(":common-exception"))
+                implementation(project(":common-kotlin"))
+                implementation(project(":presentation-core-model"))
                 implementation(project(":data-epic"))
             }
         }

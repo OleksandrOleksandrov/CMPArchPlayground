@@ -63,6 +63,8 @@ kotlin {
                 implementation(project(":data-epic")) // TODO remove when extansions are moved to another module
                 implementation(project(":presentation-core-platform"))
                 implementation(project(":presentation-core-styling"))
+                implementation(project(":presentation-core-model"))
+                implementation(project(":feature-epic-details"))
             }
         }
 

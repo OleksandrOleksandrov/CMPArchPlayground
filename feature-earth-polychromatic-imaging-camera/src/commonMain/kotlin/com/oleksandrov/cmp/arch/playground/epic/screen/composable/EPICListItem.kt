@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.oleksandrov.cmp.arch.playground.epic.model.EpicUiModel
+import com.oleksandrov.cmp.arch.playground.presentation.core.model.EpicUiModel
 
 @Composable
 fun EPICListItem(

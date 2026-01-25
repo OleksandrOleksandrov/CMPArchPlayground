@@ -18,12 +18,18 @@ class EPICRepositoryImpl(
     override val dataList: MutableStateFlow<List<EPICRepoModel>?> = MutableStateFlow(null)
 //        dbSource.getFlow().withNullableListMapper(ePICDbRepoModelMapper)
 
+    private var tempCache: List<EPICRepoModel>? = mutableListOf()
+
     override suspend fun updateData() {
-        dataList.value =
-            epicNetSource.fetchEpic().body<List<EPICNetModel>>().map(EPICRepoModelMapper::mapTo)
+        tempCache = epicNetSource.fetchEpic().body<List<EPICNetModel>>().map(EPICRepoModelMapper::mapTo)
+        dataList.value = tempCache
     }
 
     override suspend fun fetchData(): List<EPICRepoModel>? {
-        return epicNetSource.fetchEpic().body<List<EPICNetModel>>().map(EPICRepoModelMapper::mapTo)
+        tempCache = epicNetSource.fetchEpic().body<List<EPICNetModel>>().map(EPICRepoModelMapper::mapTo)
+        return tempCache
     }
+
+    override suspend fun getEpicById(id: String): EPICRepoModel? =
+        tempCache?.find { it.identifier == id }
 }

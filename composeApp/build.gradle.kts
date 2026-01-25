@@ -43,12 +43,16 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(libs.jetbrains.navigation)
             implementation(project(":network"))
             implementation(project(":data-epic"))
             implementation(project(":domain-epic"))
             implementation(project(":presentation-core-styling"))
             implementation(project(":presentation-core-platform"))
+            implementation(project(":presentation-core-model"))
+            implementation(project(":core-navigation"))
             implementation(project(":feature-earth-polychromatic-imaging-camera"))
+            implementation(project(":feature-epic-details"))
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

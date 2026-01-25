@@ -1,6 +1,7 @@
 package com.oleksandrov.cmp.arch.playground.di
 
 import com.oleksandrov.cmp.arch.playground.data.epic.di.dataEpicModule
+import com.oleksandrov.cmp.arch.playground.epic.details.di.featureEPICDetailsModule
 import com.oleksandrov.cmp.arch.playground.domain.epic.di.domainEpicModule
 import com.oleksandrov.cmp.arch.playground.epic.di.featureEarthPolychromaticImagingCameraModule
 import com.oleksandrov.cmp.arch.playground.network.impl.di.httpClientModule
@@ -16,6 +17,7 @@ fun initKoin(
             appModule,
             httpClientModule,
             featureEarthPolychromaticImagingCameraModule,
+            featureEPICDetailsModule,
             dataEpicModule,
             domainEpicModule,
         )
