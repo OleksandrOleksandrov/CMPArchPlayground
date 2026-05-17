@@ -45,3 +45,4 @@ include(":domain-epic")
 include(":feature-earth-polychromatic-imaging-camera")
 
 include(":template")
+include(":androidApp")

@@ -20,7 +20,7 @@ import com.oleksandrov.cmp.arch.playground.epic.screen.contract.ViewIntent
 import com.oleksandrov.cmp.arch.playground.epic.screen.contract.ViewState
 import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.AppTheme
 import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.core.Theme
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 internal fun EPICContent(
