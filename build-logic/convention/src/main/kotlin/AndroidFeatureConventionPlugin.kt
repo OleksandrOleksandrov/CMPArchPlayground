@@ -1,11 +1,10 @@
-import com.android.build.api.dsl.androidLibrary
+import com.android.build.api.variant.KotlinMultiplatformAndroidComponentsExtension
 import extensions.getVersionAsInt
 import extensions.plugins
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
-import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
 /**
  * A plugin that configures an Android library module with common settings.
@@ -30,11 +29,9 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
             apply("org.jetbrains.kotlin.plugin.compose")
         }
 
-        extensions.getByType<KotlinMultiplatformExtension>().apply {
-            androidLibrary {
-                compileSdk = getVersionAsInt("android-compileSdk")
-                minSdk = getVersionAsInt("android-minSdk")
-            }
+        extensions.getByType<KotlinMultiplatformAndroidComponentsExtension>().finalizeDsl { extension ->
+            extension.compileSdk = getVersionAsInt("android-compileSdk")
+            extension.minSdk = getVersionAsInt("android-minSdk")
         }
         
         dependencies {

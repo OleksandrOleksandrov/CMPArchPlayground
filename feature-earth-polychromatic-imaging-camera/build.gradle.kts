@@ -11,15 +11,13 @@ kotlin {
     // Target declarations - add or remove as needed below. These define
     // which platforms this KMP module supports.
     // See: https://kotlinlang.org/docs/multiplatform-discover-project.html#targets
-    androidLibrary {
+    android {
         namespace = "com.oleksandrov.cmp.arch.playground.earth.polychromatic.imaging.camera"
 
-        withHostTestBuilder {
+        withHostTest {
         }
 
-        withDeviceTestBuilder {
-            sourceSetTreeName = "test"
-        }.configure {
+        withDeviceTest {
             instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         }
     }
@@ -34,12 +32,12 @@ kotlin {
     val xcfName = "templateKit"
 
     listOf(
-        iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = xcfName
+            isStatic = true
         }
     }
 
@@ -54,7 +52,12 @@ kotlin {
                 implementation(libs.kotlin.stdlib)
                 // Add KMP dependencies here
                 implementation(libs.kotlinx.serialization.core)
-                implementation(compose.components.uiToolingPreview)
+                implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.material3)
+                implementation(compose.ui)
+                implementation(libs.jetbrains.compose.res)
+                implementation(libs.jetbrains.compose.ui.tp)
                 implementation(libs.androidx.core.ktx)
                 implementation(libs.androidx.lifecycle.runtimeCompose)//TODO check if this is needed
 
