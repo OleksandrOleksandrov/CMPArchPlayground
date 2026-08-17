@@ -1,7 +1,7 @@
 package com.oleksandrov.cmp.arch.playground
 
 import androidx.compose.runtime.Composable
-import com.oleksandrov.cmp.arch.playground.epic.screen.EPICScreen
+import androidx.compose.ui.Modifier
 import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.AppTheme
 import androidx.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
@@ -11,9 +11,8 @@ import org.koin.compose.viewmodel.koinViewModel
 fun App() {
     val viewModel = koinViewModel<AppViewModel>()
     AppTheme {
-        EPICScreen(
-            onAction = { epicUiModel ->
-            }
+        NavigationRoot(
+            modifier = Modifier,
         )
 //        Column(
 //            modifier = Modifier.fillMaxSize(),
