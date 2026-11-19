@@ -1,12 +1,24 @@
+import com.android.build.api.variant.HasUnitTestBuilder
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.composeCompiler)
 }
 
+androidComponents {
+    beforeVariants { variantBuilder ->
+        (variantBuilder as? HasUnitTestBuilder)?.enableUnitTest = true
+    }
+}
+
 android {
     namespace = "com.oleksandrov.cmp.arch.playground.android"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
+    compileSdk {
+        version = release(libs.versions.android.compileSdk.get().toInt()) {
+            minorApiLevel = 2
+        }
+    }
 
     defaultConfig {
         applicationId = "com.oleksandrov.cmp.arch.playground"
@@ -18,6 +30,10 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
     }
 
     buildFeatures {

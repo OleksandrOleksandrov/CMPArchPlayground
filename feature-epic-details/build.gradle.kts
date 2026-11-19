@@ -93,7 +93,7 @@ kotlin {
         androidMain {
             dependencies {
                 //region Preview tools, etc.
-                implementation(libs.uiTooling)
+                implementation(libs.androidx.compose.ui.tooling)
                 //endregion Preview tools, etc.
                 implementation(libs.androidx.material3)
 

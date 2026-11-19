@@ -1,16 +1,15 @@
 package com.oleksandrov.cmp.arch.playground
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.AppTheme
-import androidx.compose.ui.tooling.preview.Preview
-import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-@Preview
 fun App() {
-    val viewModel = koinViewModel<AppViewModel>()
-    AppTheme {
+    AppTheme(
+        useDarkTheme = isSystemInDarkTheme(),
+    ) {
         NavigationRoot(
             modifier = Modifier,
         )

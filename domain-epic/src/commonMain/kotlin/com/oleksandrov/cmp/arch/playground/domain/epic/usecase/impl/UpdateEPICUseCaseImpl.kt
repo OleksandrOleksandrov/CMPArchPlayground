@@ -10,6 +10,6 @@ class UpdateEPICUseCaseImpl(
     private val repository: EPICRepository,
 ) : UpdateEPICUseCase {
     override suspend fun invoke(): Result<List<EPICDomainModel>?> = resultLauncher {
-        repository.fetchData()?.map { EPICDomainRepoModelMapper.mapFrom(it) }
+        repository.fetchData()?.map(EPICDomainRepoModelMapper::mapFrom)
     }
 }

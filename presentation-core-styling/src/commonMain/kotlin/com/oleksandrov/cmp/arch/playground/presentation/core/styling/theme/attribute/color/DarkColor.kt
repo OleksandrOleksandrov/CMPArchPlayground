@@ -67,17 +67,17 @@ val attributeDarkColorPalette =
             ),
         themeNColor =
             ThemeNColor(
-                n50 = Color(0xFFFAFAFA),
-                n100 = Color(0xFFF6F7F9),
-                n200 = Color(0xFFE8E7EA),
-                n300 = Color(0xFFCED2D6),
-                n400 = Color(0xFF9EA5AD),
+                n50 = Color(0xFF000000),
+                n100 = Color(0xFF1C2127),
+                n200 = Color(0xFF2C3137),
+                n300 = Color(0xFF454C52),
+                n400 = Color(0xFF596066),
                 n500 = Color(0xFF676E76),
-                n600 = Color(0xFF596066),
-                n700 = Color(0xFF454C52),
-                n800 = Color(0xFF2C3137),
-                n900 = Color(0xFF1C2127),
-                n1000 = Color(0xFF000000),
+                n600 = Color(0xFF9EA5AD),
+                n700 = Color(0xFFCED2D6),
+                n800 = Color(0xFFE8E7EA),
+                n900 = Color(0xFFF6F7F9),
+                n1000 = Color(0xFFFAFAFA),
             ),
         themeGColor =
             ThemeGColor(
