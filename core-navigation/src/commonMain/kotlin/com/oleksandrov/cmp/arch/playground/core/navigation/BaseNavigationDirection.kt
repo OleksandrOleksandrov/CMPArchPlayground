@@ -6,8 +6,11 @@ import kotlinx.serialization.Serializable
 @Serializable
 sealed class BaseNavigationDirection : NavKey {
 
+    /**
+     * Loading screen to show loading state.
+     */
     @Serializable
-    data object Main : BaseNavigationDirection()
+    data object LoadingDirection : BaseNavigationDirection()
 
     /**
      * Earth Polychromatic Imaging Camera (EPIC)

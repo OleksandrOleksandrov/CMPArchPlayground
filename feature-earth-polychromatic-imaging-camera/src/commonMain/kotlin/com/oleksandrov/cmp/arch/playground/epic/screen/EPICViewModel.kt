@@ -1,7 +1,7 @@
 package com.oleksandrov.cmp.arch.playground.epic.screen
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.oleksandrov.cmp.arch.playground.domain.epic.usecase.EPICDataListFlowUseCase
 import com.oleksandrov.cmp.arch.playground.domain.epic.usecase.UpdateEPICUseCase
 import com.oleksandrov.cmp.arch.playground.epic.mapper.EPICDomainUiModelMapper
 import com.oleksandrov.cmp.arch.playground.epic.screen.contract.PartialStateChange
@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.filterIsInstance
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.merge
@@ -25,6 +26,7 @@ import kotlinx.coroutines.flow.transformLatest
 
 internal class EPICViewModel(
     private val updateEPICUseCase: UpdateEPICUseCase,
+    private val epicDataListFlowUseCase: EPICDataListFlowUseCase,
 //    savedStateHandle: SavedStateHandle,
 ) : BaseMviViewModel<ViewIntent, ViewState, ViewEvent>() {
 
@@ -55,6 +57,10 @@ internal class EPICViewModel(
     private fun Flow<ViewIntent>.toPartialStateChange(): Flow<PartialStateChange> {
         val initFlow = filterIsInstance<ViewIntent.OnStartIntent>()
             .transformLatest { intent ->
+                epicDataListFlowUseCase().collectLatest { list ->
+                    val uiList = list?.let(EPICDomainUiModelMapper::mapListTo) ?: emptyList()
+                    emit(PartialStateChange.EpicList.SetData(uiList))
+                }
                 updateEPICUseCase()
                     .onSuccess { list ->
                         val uiList = list?.let(EPICDomainUiModelMapper::mapListTo) ?: emptyList()
