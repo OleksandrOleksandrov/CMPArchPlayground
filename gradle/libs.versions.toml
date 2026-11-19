@@ -1,5 +1,5 @@
 [versions]
-agp = "9.5.1"
+agp = "9.5.3"
 androidx-activity = "1.10.1"
 androidx-appcompat = "1.7.1"
 androidx-constraintlayout = "2.2.1"
@@ -7,15 +7,19 @@ androidx-core = "1.17.0"
 androidx-espresso = "3.7.0"
 androidx-lifecycle = "2.9.6"
 androidx-testExt = "1.3.0"
-composeMultiplatform = "1.11.0"
-junit = "4.13.2"
+composeMultiplatform = "1.12.2"
 kotlinStdlib = "2.4.21"
 runner = "1.7.0"
 core = "1.7.0"
 kotlinxSerialization = "1.12.0"
 material3 = "1.4.0"
-material3WindowSizeClass = "1.4.0"
+material3WindowSizeClass = "1.5.0"
 kotlinDateTime = "0.7.1"
+
+#region tooling
+jetbrains-ui-prview = "1.12.2"
+androidx-ui-prview = "1.13.0"
+#endregion tooling
 
 #region koin
 koinComposeMultiplatform = "4.1.1"
@@ -46,8 +50,16 @@ compose-multiplatform-lifecycle = "2.11.0"
 coil = "3.6.3"
 #endregion coil
 
+compottie="2.3.3"
+
+# --------------------- Test ---------------------
+junit = "4.13.2"
+mokkery = "3.6.0"
+compose-test = "1.13.0"
+robolectric = "4.18.1"
+jetbrains-compose-ui-test = "1.12.2"
+
 [libraries]
-kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-testJunit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 junit = { module = "junit:junit", version.ref = "junit" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
@@ -63,9 +75,10 @@ androidx-runner = { group = "androidx.test", name = "runner", version.ref = "run
 androidx-core = { group = "androidx.test", name = "core", version.ref = "core" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
 jetbrains-compose-res = { module = "org.jetbrains.compose.components:components-resources", version.ref = "composeMultiplatform" }
-jetbrains-compose-ui-tp = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version.ref = "composeMultiplatform" }
-jetbrains-compose-ui-tooling = { module = "org.jetbrains.compose.ui:ui-tooling", version.ref = "composeMultiplatform" }
-uiTooling = { module = "androidx.compose.ui:ui-tooling", version = "1.7.8" }
+
+jetbrains-compose-ui-tp = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version.ref = "jetbrains-ui-prview" }
+androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version = "androidx-ui-prview" }
+
 android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
 android-gradle-api = { module = "com.android.tools.build:gradle-api", version.ref = "agp" }
 kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -74,7 +87,7 @@ android-mpp-plugin = { group = "com.android.kotlin.multiplatform.library", name 
 compose-gradle-plugin = { group = "org.jetbrains.compose", name = "compose-gradle-plugin", version.ref = "composeMultiplatform" }
 detekt-gradle-plugin = { group = "io.gitlab.arturbosch.detekt", name = "detekt-gradle-plugin", version = "1.23.8" }
 
-# region adaptive
+#region adaptive
 androidx-material3-adaptive-navigation-suite = { module = "androidx.compose.material3:material3-adaptive-navigation-suite" }
 androidx-material3-window-sizeclass = { module = "androidx.compose.material3:material3-window-size-class", version.ref = "material3WindowSizeClass" }
 androidx-adaptive = { module = "androidx.compose.material3.adaptive:adaptive" }
@@ -118,6 +131,24 @@ coil-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor3", version.re
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
 #endregion coil
 
+#region compottie
+compottie = { module = "io.github.alexzhirkevich:compottie", version.ref = "compottie" }
+compottie-lite = { module = "io.github.alexzhirkevich:compottie-lite", version.ref = "compottie" }
+compottie-dot = { module = "io.github.alexzhirkevich:compottie-dot", version.ref = "compottie" }
+compottie-network = { module = "io.github.alexzhirkevich:compottie-network", version.ref = "compottie" }
+compottie-resources = { module = "io.github.alexzhirkevich:compottie-resources", version.ref = "compottie" }
+#endregion compottie
+
+# --------------------- Test ---------------------
+
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+androidx-compose-ui-test = { group = "androidx.compose.ui", name = "ui-test", version.ref = "compose-test" }
+robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
+jetbrains-compose-ui-test = { module = "org.jetbrains.compose.ui:ui-test", version.ref = "jetbrains-compose-ui-test" }
+#region mokkery
+mokkery = { module = "dev.mokkery:mokkery-runtime", version.ref = "mokkery"}
+#endregion mokkery
+
 [bundles]
 koin = ["koin.core", "koin.compose", "koin.compose.viewmodel"]
 ktor = [
@@ -138,6 +169,7 @@ kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 androidKotlinMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
 # https://mvnrepository.com/artifact/org.jetbrains.kotlin.plugin.serialization/org.jetbrains.kotlin.plugin.serialization.gradle.plugin
 org-jetbrains-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "serialization" }
+mokkery = { id = "dev.mokkery", version.ref = "mokkery" }
 
 android-app-module-convention = { id = "com.oleksandr.android.application" }
 convention-koin = { id = "com.oleksandr.convention.koin" }

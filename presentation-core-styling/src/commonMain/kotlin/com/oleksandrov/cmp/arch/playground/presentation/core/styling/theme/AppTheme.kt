@@ -3,6 +3,7 @@ package com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.attribute.attributeCorner
+import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.attribute.attributeSize
 import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.attribute.attributeSpacing
 import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.attribute.color.attributeDarkColorPalette
 import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.attribute.color.attributeLightColorPalette
@@ -36,6 +37,7 @@ fun AppTheme(
         LocalThemeColor provides currentColorPalette,
         LocalThemeCorner provides attributeCorner,
         LocalThemeSpacing provides attributeSpacing,
+        LocalThemeSize provides attributeSize,
         LocalThemeTypography provides attributeTypography,
         content = content,
     )

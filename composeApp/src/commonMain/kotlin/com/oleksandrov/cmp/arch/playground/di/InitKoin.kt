@@ -5,6 +5,7 @@ import com.oleksandrov.cmp.arch.playground.data.epic.di.dataEpicModule
 import com.oleksandrov.cmp.arch.playground.domain.epic.di.domainEpicModule
 import com.oleksandrov.cmp.arch.playground.epic.details.di.featureEpicDetailsModule
 import com.oleksandrov.cmp.arch.playground.epic.di.featureEarthPolychromaticImagingCameraModule
+import com.oleksandrov.cmp.arch.playground.loading.di.featureLoadingScreenModule
 import com.oleksandrov.cmp.arch.playground.network.impl.di.httpClientModule
 import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration
@@ -18,6 +19,7 @@ fun initKoin(
             appModule,
             coreNavigationModule,
             httpClientModule,
+            featureLoadingScreenModule,
             featureEarthPolychromaticImagingCameraModule,
             featureEpicDetailsModule,
             dataEpicModule,

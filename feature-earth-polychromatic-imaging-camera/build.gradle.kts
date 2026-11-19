@@ -76,6 +76,7 @@ kotlin {
                 implementation(project(":data-epic")) // TODO remove when extansions are moved to another module
                 implementation(project(":presentation-core-platform"))
                 implementation(project(":presentation-core-styling"))
+                implementation(project(":presentation-core-ui"))
             }
         }
 
@@ -88,7 +89,7 @@ kotlin {
         androidMain {
             dependencies {
                 //region Preview tools, etc
-                implementation(libs.uiTooling)
+                implementation(libs.androidx.compose.ui.tooling)
                 //endregion Preview tools, etc
                 implementation(libs.androidx.material3)
 

@@ -30,7 +30,11 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
         }
 
         extensions.getByType<KotlinMultiplatformAndroidComponentsExtension>().finalizeDsl { extension ->
-            extension.compileSdk = getVersionAsInt("android-compileSdk")
+            extension.compileSdk {
+                version = release(getVersionAsInt("android-compileSdk")) {
+                    minorApiLevel = 2
+                }
+            }
             extension.minSdk = getVersionAsInt("android-minSdk")
         }
         

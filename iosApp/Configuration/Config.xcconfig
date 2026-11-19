@@ -2,6 +2,7 @@ TEAM_ID=
 
 PRODUCT_NAME=CMP Arch
 PRODUCT_BUNDLE_IDENTIFIER=com.oleksandrov.cmp.arch.playground.CMPArchitecturePlayground$(TEAM_ID)
+EXCLUDED_ARCHS[sdk=iphonesimulator*] = x86_64
 
 CURRENT_PROJECT_VERSION=1
 MARKETING_VERSION=1.0
