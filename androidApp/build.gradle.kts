@@ -1,7 +1,15 @@
+import com.android.build.api.variant.HasUnitTestBuilder
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.composeCompiler)
+}
+
+androidComponents {
+    beforeVariants { variantBuilder ->
+        (variantBuilder as? HasUnitTestBuilder)?.enableUnitTest = true
+    }
 }
 
 android {
