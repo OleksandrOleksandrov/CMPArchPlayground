@@ -26,14 +26,9 @@ kotlin {
     }
 
     sourceSets {
-
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
-
-            //region Preview tools, etc
-            implementation(libs.uiTooling)
-            //endregion Preview tools, etc
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -49,12 +44,9 @@ kotlin {
             implementation(project(":domain-epic"))
             implementation(project(":presentation-core-styling"))
             implementation(project(":presentation-core-platform"))
+            implementation(project(":feature-loading-screen"))
             implementation(project(":feature-earth-polychromatic-imaging-camera"))
             implementation(project(":feature-epic-details"))
-
-            //region Preview tools, etc
-            implementation(libs.jetbrains.compose.ui.tp)
-            //endregion Preview tools, etc
 
             //region navigation3
             implementation(libs.jetbrains.navigation3.ui)

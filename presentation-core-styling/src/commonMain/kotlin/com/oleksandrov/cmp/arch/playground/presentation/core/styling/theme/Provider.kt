@@ -2,6 +2,7 @@ package com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme
 
 import androidx.compose.runtime.staticCompositionLocalOf
 import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.core.ThemeCorner
+import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.core.ThemeSize
 import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.core.ThemeSpacing
 import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.core.ThemeTypography
 
@@ -17,6 +18,11 @@ internal val LocalThemeCorner =
 
 internal val LocalThemeSpacing =
     staticCompositionLocalOf<ThemeSpacing> {
+        error("No implementation")
+    }
+
+internal val LocalThemeSize =
+    staticCompositionLocalOf<ThemeSize> {
         error("No implementation")
     }
 

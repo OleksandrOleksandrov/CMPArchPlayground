@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CMP Arch</string>
+    <string name="content_description">Empty icon</string>
+    <string name="content_description_loading">Loading</string>
+    <string name="retry">Retry</string>
+    <string name="error_no_internet_connection">The error happened, check your internet connection and try again.</string>
+</resources>

@@ -7,12 +7,11 @@ import androidx.navigation3.scene.SceneStrategy
 import androidx.navigation3.scene.SceneStrategyScope
 import androidx.window.core.layout.WindowSizeClass
 import androidx.window.core.layout.WindowSizeClass.Companion.WIDTH_DP_MEDIUM_LOWER_BOUND
-import com.oleksandrov.cmp.arch.playground.core.navigation.BaseNavigationDirection
 import com.oleksandrov.cmp.arch.playground.core.navigation.scene.TwoPaneScene
 
 class ListWithDetailsSceneStrategy<T : Any>(
     val windowClass: WindowSizeClass,
-    private val emptyContent: @Composable () -> Unit,
+    val empty: NavEntry<T>,
 ) : SceneStrategy<T> {
 
     override fun SceneStrategyScope<T>.calculateScene(entries: List<NavEntry<T>>): Scene<T>? {
@@ -22,28 +21,19 @@ class ListWithDetailsSceneStrategy<T : Any>(
 
         val lastTwoEntries = entries.takeLast(2)
         val hasTwoPaneKeys = lastTwoEntries.all {
-            it.metadata.containsKey(TwoPaneScene.TWO_PANE_KEY) && it.metadata[TwoPaneScene.TWO_PANE_KEY] == true
+            it.metadata.containsKey(TwoPaneScene.TWO_PANE_KEY) || it.metadata[TwoPaneScene.TWO_PANE_KEY] == true
         }
 
         val listEntry = lastTwoEntries.first()
-        return if (lastTwoEntries.size == 2 && hasTwoPaneKeys) {
+        return if (hasTwoPaneKeys) {
             TwoPaneScene(
                 key = listEntry.contentKey,
                 previousEntries = entries.dropLast(1),
                 listEntry = listEntry,
-                detailsEntry = lastTwoEntries.last(),
+                detailsEntry = if (entries.size == 1) empty else lastTwoEntries.last(),
             )
         } else {
-            TwoPaneScene(
-                key = listEntry.contentKey,
-                previousEntries = entries.dropLast(1),
-                listEntry = listEntry,
-                detailsEntry = NavEntry(
-                    key = BaseNavigationDirection.EpicEmptyDetails as T,
-                ) {
-                    emptyContent()
-                },
-            )
+            null
         }
     }
 }
