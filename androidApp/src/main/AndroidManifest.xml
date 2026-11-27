@@ -9,11 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_space_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="false"
-        android:theme="@android:style/Theme.Material.Light.NoActionBar">
+        android:theme="@style/NightAdjusted.Theme.Splash">
         <activity
             android:exported="true"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|mnc|colorMode|density|fontScale|fontWeightAdjustment|keyboard|layoutDirection|locale|mcc|navigation|smallestScreenSize|touchscreen|uiMode"
-            android:name="com.oleksandrov.cmp.arch.playground.MainActivity">
+            android:name="com.oleksandrov.cmp.arch.playground.MainActivity"
+            android:theme="@style/NightAdjusted.Theme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

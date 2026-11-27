@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- region splash -->
+    <style name="NightAdjusted.Theme.Splash" parent="NightAdjusted.Theme.Skeleton">
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="Theme.Skeleton.Splash" parent="NightAdjusted.Theme.Splash">
+        <item name="postSplashScreenTheme">@style/Theme.Skeleton</item>
+        <item name="android:windowBackground">@color/window_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@android:color/transparent</item>
+        <item name="windowSplashScreenAnimationDuration">0</item>
+    </style>
+    <!-- endregion splash -->
+
+    <!--region core-->
+    <style name="NightAdjusted.Theme.Skeleton" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/window_background</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
+    </style>
+
+    <style name="PlatformAdjusted.Theme.Skeleton" parent="NightAdjusted.Theme.Skeleton">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="Theme.Skeleton" parent="PlatformAdjusted.Theme.Skeleton" />
+    <!--endregion core-->
+</resources>

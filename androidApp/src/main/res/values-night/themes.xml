@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources tools:targetApi="27" xmlns:tools="http://schemas.android.com/tools">
+
+    <!--region core-->
+    <style name="NightAdjusted.Theme.Skeleton" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/window_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+    </style>
+    <!--endregion core-->
+</resources>

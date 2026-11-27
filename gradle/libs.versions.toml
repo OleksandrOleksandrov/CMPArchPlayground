@@ -52,6 +52,10 @@ coil = "3.6.3"
 
 compottie="2.3.3"
 
+#region splash screen
+splashscreen="1.2.0"
+#endregion splash screen
+
 # --------------------- Test ---------------------
 junit = "4.13.2"
 mokkery = "3.6.0"
@@ -138,6 +142,10 @@ compottie-dot = { module = "io.github.alexzhirkevich:compottie-dot", version.ref
 compottie-network = { module = "io.github.alexzhirkevich:compottie-network", version.ref = "compottie" }
 compottie-resources = { module = "io.github.alexzhirkevich:compottie-resources", version.ref = "compottie" }
 #endregion compottie
+
+#region splash screen
+splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "splashscreen" }
+#endregion splash screen
 
 # --------------------- Test ---------------------
 
