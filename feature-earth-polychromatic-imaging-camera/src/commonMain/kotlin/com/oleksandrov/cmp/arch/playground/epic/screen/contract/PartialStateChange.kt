@@ -14,13 +14,13 @@ internal sealed interface PartialStateChange {
 
         override fun reduce(state: ViewState): ViewState = when (this) {
             is SetData -> state.copy(
-                isProcessing = false,
+                isLoading = false,
                 epicList = list,
             )
 
             SetError -> state.copy(
-                isProcessing = false,
-                isListLoadingError = true,
+                isLoading = false,
+                isLoadingError = true,
             )
         }
     }

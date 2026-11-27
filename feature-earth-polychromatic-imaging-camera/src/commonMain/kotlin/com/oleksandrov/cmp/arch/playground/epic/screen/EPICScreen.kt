@@ -1,5 +1,8 @@
 package com.oleksandrov.cmp.arch.playground.epic.screen
 
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -14,9 +17,8 @@ import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun EPICScreen(
-    onAction: (EpicUiModel) -> Unit
+    onAction: (EpicUiModel) -> Unit,
 ) {
-
     val scope = rememberCoroutineScope()
     val viewModel: EPICViewModel = koinViewModel()
     val state by viewModel.viewState.collectAsStateWithLifecycle()
@@ -36,13 +38,18 @@ fun EPICScreen(
         }
     }
 
-    EPICContent(
-        modifier = Modifier,
-        state = state,
-        onIntent = {
-            scope.launch {
-                viewModel.processIntent(it)
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        contentWindowInsets = WindowInsets(0),
+    ) {
+        EPICContent(
+            modifier = Modifier,
+            state = state,
+            onIntent = {
+                scope.launch {
+                    viewModel.processIntent(it)
+                }
             }
-        }
-    )
+        )
+    }
 }

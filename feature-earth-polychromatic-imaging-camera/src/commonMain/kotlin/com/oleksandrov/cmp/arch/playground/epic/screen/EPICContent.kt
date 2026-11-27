@@ -11,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.oleksandrov.cmp.arch.playground.epic.model.EpicUiModel
 import com.oleksandrov.cmp.arch.playground.epic.model.PictureOfDayUiModel
@@ -20,6 +19,8 @@ import com.oleksandrov.cmp.arch.playground.epic.screen.contract.ViewIntent
 import com.oleksandrov.cmp.arch.playground.epic.screen.contract.ViewState
 import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.AppTheme
 import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.core.Theme
+import com.oleksandrov.cmp.arch.playground.presentation.core.ui.preview.AppPreview5Dot5Inch
+import com.oleksandrov.cmp.arch.playground.presentation.core.ui.preview.AppPreviewAll
 
 @Composable
 internal fun EPICContent(
@@ -39,7 +40,7 @@ internal fun EPICContent(
             Box(
                 modifier = Modifier.fillMaxSize()
             ) {
-                if (state.isProcessing) {
+                if (isLoading) {
                     Box(
                         modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.Center
@@ -55,8 +56,7 @@ internal fun EPICContent(
                         modifier = Modifier,
                         paddingValues = scaffoldPaddingValues,
                         lazyState = listState,
-                        pictureOfDayUiModel = null,
-                        list = state.epicList,
+                        list = epicList,
                         onClick = {
                             onIntent(ViewIntent.OnEpicItemTappedIntent(it))
                         }
@@ -68,30 +68,32 @@ internal fun EPICContent(
 }
 
 @Composable
-@Preview
-private fun EPICContentMediumWindowSizePreview() {
+@AppPreviewAll
+private fun EPICContent_Preview() {
     AppTheme {
         EPICContent(
             modifier = Modifier,
             state = ViewState(
-                isProcessing = false,
+                isLoading = false,
                 epicList = mockList,
-                isListLoadingError = false,
+                isLoadingError = false,
             ),
         )
     }
 }
 
 @Composable
-@Preview
-private fun EPICContentCompactWindowSizePreview() {
-    AppTheme {
+@AppPreview5Dot5Inch
+private fun EPICContentDark_Preview() {
+    AppTheme(
+        useDarkTheme = true,
+    ) {
         EPICContent(
             modifier = Modifier,
             state = ViewState(
-                isProcessing = false,
+                isLoading = false,
                 epicList = mockList,
-                isListLoadingError = false,
+                isLoadingError = false,
             ),
         )
     }
@@ -106,7 +108,7 @@ private val pictureOfDayUiModel = PictureOfDayUiModel(
     title = "Picture of the Day",
     url = "",
 )
-private val mockList = listOf(
+val mockList = listOf(
     EpicUiModel(
         identifier = "1",
         image = "https://example.com/image1.jpg",

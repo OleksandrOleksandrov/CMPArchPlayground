@@ -53,11 +53,11 @@ val attributeDarkColorPalette =
             ),
         themeBnColor =
             ThemeBnColor(
-                bn50 = Color(0xFF050403),
-                bn100 = Color(0xFF0A0908),
+                bn50 = Color(0xFF2D2A2A),
+                bn100 = Color(0xFF1E1C1E),
                 bn200 = Color(0xFF141313),
-                bn300 = Color(0xFF1E1C1E),
-                bn400 = Color(0xFF2D2A2A),
+                bn300 = Color(0xFF0A0908),
+                bn400 = Color(0xFF050403),
             ),
         themeBgColor =
             ThemeBgColor(
