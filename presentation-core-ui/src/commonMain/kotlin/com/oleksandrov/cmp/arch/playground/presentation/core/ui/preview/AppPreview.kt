@@ -15,6 +15,7 @@ annotation class AppPreview
  */
 @AppPreview4Inch
 @AppPreview5Dot5Inch
+@AppPreview5Dot5InchHorizontal
 @AppPreview10Inch
 @AppPreviewScaledText1Dot5
 @AppPreviewScaledText2x
@@ -43,6 +44,18 @@ annotation class AppPreview4Inch
     showBackground = true,
 )
 annotation class AppPreview5Dot5Inch
+
+/**
+ * An annotation for previewing Composables on a 5.5 inch on horizontal phone screen.
+ */
+@Preview(
+    name = "5.5 inch horizontal",
+    group = "Devices",
+    heightDp = 360,
+    widthDp = 640,
+    showBackground = true,
+)
+annotation class AppPreview5Dot5InchHorizontal
 
 /**
  * An annotation for previewing Composables on a 10 inch tablet screen.

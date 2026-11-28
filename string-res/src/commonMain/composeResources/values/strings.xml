@@ -1,7 +1,14 @@
 <resources>
     <string name="app_name">CMP Arch</string>
+
+    <!-- Content description -->
     <string name="content_description">Empty icon</string>
     <string name="content_description_loading">Loading</string>
+
+    <!-- Loading screen -->
     <string name="retry">Retry</string>
     <string name="error_no_internet_connection">The error happened, check your internet connection and try again.</string>
+
+    <!-- EPIC Details -->
+    <string name="epic_details_nothing_selected">Noting selected</string>
 </resources>

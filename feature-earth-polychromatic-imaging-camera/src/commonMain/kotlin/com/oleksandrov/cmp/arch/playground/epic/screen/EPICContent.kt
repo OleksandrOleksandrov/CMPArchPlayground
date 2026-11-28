@@ -1,12 +1,10 @@
 package com.oleksandrov.cmp.arch.playground.epic.screen
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -32,11 +30,11 @@ internal fun EPICContent(
     val listState = rememberSaveable(saver = LazyListState.Saver) { LazyListState(0, 0) }
 
     with(state) {
-        Scaffold(
-            modifier = modifier,
-            contentWindowInsets = WindowInsets.safeDrawing,
-            containerColor = Theme.color.themeNColor.n50,
-        ) { scaffoldPaddingValues ->
+//        Scaffold(
+//            modifier = modifier,
+//            contentWindowInsets = WindowInsets.safeDrawing,
+//            containerColor = Theme.color.themeNColor.n50,
+//        ) { scaffoldPaddingValues ->
             Box(
                 modifier = Modifier.fillMaxSize()
             ) {
@@ -54,7 +52,7 @@ internal fun EPICContent(
                 } else {
                     EPICList(
                         modifier = Modifier,
-                        paddingValues = scaffoldPaddingValues,
+                        paddingValues = PaddingValues(),
                         lazyState = listState,
                         list = epicList,
                         onClick = {
@@ -63,7 +61,7 @@ internal fun EPICContent(
                     )
                 }
             }
-        }
+//        }
     }
 }
 

@@ -23,29 +23,25 @@ internal fun EPICListItem(
     modifier: Modifier,
     item: EpicUiModel,
 ) {
-    Box(
-        modifier = modifier.padding(Theme.spacing.space8),
+    ElevatedCard(
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = Theme.spacing.space6
+        ),
+        modifier = modifier,
     ) {
-        ElevatedCard(
-            elevation = CardDefaults.cardElevation(
-                defaultElevation = Theme.spacing.space6
-            ),
-            modifier = Modifier,
+        Column(
+            modifier = Modifier
+                .background(Theme.color.themeBnColor.bn50)
+                .padding(Theme.spacing.space12),
         ) {
-            Column(
-                modifier = Modifier
-                    .background(Theme.color.themeBnColor.bn50)
-                    .padding(Theme.spacing.space12),
-            ) {
-                CommonBodyText(
-                    text = item.caption.orEmpty(),
-                )
-                CommonBodyText(
-                    modifier = Modifier.fillMaxWidth(),
-                    text = item.date.orEmpty(),
-                    textAlign = TextAlign.End,
-                )
-            }
+            CommonBodyText(
+                text = item.caption.orEmpty(),
+            )
+            CommonBodyText(
+                modifier = Modifier.fillMaxWidth(),
+                text = item.date.orEmpty(),
+                textAlign = TextAlign.End,
+            )
         }
     }
 }
@@ -61,10 +57,14 @@ val epicUiModelPreview = EpicUiModel(
 @AppPreviewAll
 private fun EPICListItem_Preview() {
     AppTheme {
-        EPICListItem(
-            modifier = Modifier,
-            item = epicUiModelPreview,
-        )
+        Box(
+            modifier = Modifier.padding(Theme.spacing.space8),
+        ) {
+            EPICListItem(
+                modifier = Modifier,
+                item = epicUiModelPreview,
+            )
+        }
     }
 }
 

@@ -1,8 +1,8 @@
 package com.oleksandrov.cmp.arch.playground.epic.screen.composable
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
@@ -26,7 +26,7 @@ internal fun EPICList(
     onClick: (EpicUiModel) -> Unit,
 ) {
     LazyColumn(
-        modifier = modifier.background(Theme.color.themeBnColor.bn100),
+        modifier = modifier,
         contentPadding = paddingValues,
         state = lazyState,
         content = {
@@ -43,7 +43,7 @@ internal fun EPICList(
                 key = { it.identifier.orEmpty() }
             ) {
                 EPICListItem(
-                    modifier = Modifier
+                    modifier = Modifier.padding(Theme.spacing.space8)
                         .clickable { onClick(it) },
                     item = it,
                 )

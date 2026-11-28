@@ -12,6 +12,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.oleksandrov.cmp.arch.playground.epic.model.EpicUiModel
 import com.oleksandrov.cmp.arch.playground.epic.screen.contract.ViewEvent
 import com.oleksandrov.cmp.arch.playground.presentation.core.platform.composable.rememberFlowWithLifecycle
+import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.core.Theme
 import kotlinx.coroutines.launch
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -41,7 +42,8 @@ fun EPICScreen(
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         contentWindowInsets = WindowInsets(0),
-    ) {
+        containerColor = Theme.color.themeNColor.n50,
+    ) { scaffoldPaddingValues ->
         EPICContent(
             modifier = Modifier,
             state = state,
