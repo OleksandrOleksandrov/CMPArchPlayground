@@ -8,9 +8,9 @@ import com.oleksandrov.cmp.arch.playground.presentation.core.platform.base.mvi.M
 @Immutable
 //@Parcelize
 internal data class ViewState(
-    val isProcessing: Boolean = true,
+    val isLoading: Boolean = true,
     val epicList: List<EpicUiModel> = emptyList(),
-    val isListLoadingError: Boolean = false,
+    val isLoadingError: Boolean = false,
 ) : MviViewState {
 //    Parcelable {
     companion object {

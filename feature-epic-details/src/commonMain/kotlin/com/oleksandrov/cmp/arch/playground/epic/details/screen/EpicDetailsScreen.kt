@@ -1,8 +1,7 @@
 package com.oleksandrov.cmp.arch.playground.epic.details.screen
 
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -34,12 +33,13 @@ fun EpicDetailsScreen(
     }
 
     Scaffold(
-        modifier = modifier,
-        contentWindowInsets = WindowInsets.safeDrawing,
+        modifier = modifier.fillMaxSize(),
+        contentWindowInsets = WindowInsets(0),
         containerColor = Theme.color.themeNColor.n50,
     ) { scaffoldPaddingValues ->
         EpicDetailsContent(
-            modifier = Modifier.padding(scaffoldPaddingValues),
+            modifier = Modifier,
+            padding = scaffoldPaddingValues,
             state = state,
         )
     }

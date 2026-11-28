@@ -2,6 +2,7 @@ package com.oleksandrov.cmp.arch.playground.epic.screen.composable
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
@@ -10,15 +11,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.oleksandrov.cmp.arch.playground.epic.model.EpicUiModel
 import com.oleksandrov.cmp.arch.playground.epic.model.PictureOfDayUiModel
+import com.oleksandrov.cmp.arch.playground.epic.screen.mockList
 import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.AppTheme
-import androidx.compose.ui.tooling.preview.Preview
+import com.oleksandrov.cmp.arch.playground.presentation.core.styling.theme.core.Theme
+import com.oleksandrov.cmp.arch.playground.presentation.core.ui.preview.AppPreviewAll
 
 @Composable
 internal fun EPICList(
     modifier: Modifier,
     paddingValues: PaddingValues,
     lazyState: LazyListState,
-    pictureOfDayUiModel: PictureOfDayUiModel?,
+    pictureOfDayUiModel: PictureOfDayUiModel? = null,
     list: List<EpicUiModel>,
     onClick: (EpicUiModel) -> Unit,
 ) {
@@ -40,7 +43,7 @@ internal fun EPICList(
                 key = { it.identifier.orEmpty() }
             ) {
                 EPICListItem(
-                    modifier = Modifier
+                    modifier = Modifier.padding(Theme.spacing.space8)
                         .clickable { onClick(it) },
                     item = it,
                 )
@@ -50,28 +53,13 @@ internal fun EPICList(
 }
 
 @Composable
-@Preview
-private fun EPICListPreview() {
+@AppPreviewAll
+private fun EPICList_Preview() {
     AppTheme {
         EPICList(
             modifier = Modifier,
             pictureOfDayUiModel = null,
-            list = listOf(
-                EpicUiModel(
-                    identifier = "1",
-                    image = "https://example.com/image1.jpg",
-                    caption = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n" +
-                            "\n",
-                    date = "2023-10-01"
-                ),
-                EpicUiModel(
-                    identifier = "2",
-                    image = "https://example.com/image2.jpg",
-                    caption = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n" +
-                            "\n",
-                    date = "2023-10-02"
-                )
-            ),
+            list = mockList,
             paddingValues = PaddingValues(0.dp),
             lazyState = LazyListState(0, 0),
             onClick = {},
